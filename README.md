@@ -7,13 +7,13 @@ Este programa implementa una aplicación que permite gestionar permisos de usuar
 Para compilar el programa, utiliza el siguiente comando en la terminal:
 
 ```bash
-g++ -o programa main.cpp -std=c++11
+g++ -o programa ej.cpp -std=c++11
 ```
 # Ejecución
 Una vez compilado, puedes ejecutar el programa proporcionando el nombre de usuario y el vector correspondiente. Aquí tienes un ejemplo:
 
 ```bash
-./programa edgardo:1,2,3
+./programa -u edgardo -v 1,2,3
 ```
 Esto ejecuta el programa asignando como nombre de usuario "edgardo" y el vector {1, 2, 3}
 
@@ -36,3 +36,12 @@ vicho;1,2,3
 edgardo;1,2,4
 mati;3,4
 ```
+
+## Ejecución
+- **Si el usuario se encuentra en la base de datos.**
+El programa le dará las opciones a ejecutar en el vector correspondientes a sus permisos.
+Si el usuario no tiene permiso a ejecutar una opción, se le negará.
+
+- **Si el usuario no se encuentra en la base de datos**
+El programa dará la opción para agregarlo a la base de datos, además solicitará los permisos que quiere que tenga este nuevo usuario.
+Posteriormente, se ejecutará el resto del programa.
