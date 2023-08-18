@@ -5,6 +5,8 @@
 #include <sstream>
 #include <cstdlib>
 #include <algorithm>
+#include <getopt.h>
+#include <unordered_map>
 
 using namespace std;
 
@@ -56,13 +58,25 @@ vector<int> permisosTxt(string usuario);
 
 
 int main(int argc, char* argv[]){
-    if (argc != 2) {
-        cerr << "Uso: " << argv[0] << " <usuario>:<permiso1>;<permiso2>;<permiso3>" << endl;
-        return EXIT_FAILURE;
+    int option;
+    string usuario;
+    string permisosStr;
+
+    while ((option = getopt(argc, argv, "u:v:")) != -1) {
+        switch (option) {
+            case 'u':
+                usuario = optarg;
+                break;
+            case 'v':
+                permisosStr = optarg;
+                break;
+            default:
+                cerr << "Uso: " << argv[0] << " -u <nombre> -v <numeros>" << endl;
+                return EXIT_FAILURE;
+        }
     }
 
-    string usuarioYPermisos = argv[1];
-    string usuario = usuarioYPermisos.substr(0, usuarioYPermisos.find(':'));
+    cout << "USUARIO: " << usuario << endl;
 
     if(!verificarUsuario(usuario)){
         cout << "¿Deseas agregarlo? (S/N): ";
@@ -88,9 +102,6 @@ int main(int argc, char* argv[]){
 
     
     cout << "USUARIO: " << usuario << endl;
-
-    string permisosStr = usuarioYPermisos.substr(usuarioYPermisos.find(':')+1);
-    // cout << permisosStr << endl;
 
     vector<int> vectorInput = permisosInput(permisosStr);
     vector<int> permisostxt = permisosTxt(usuario);
