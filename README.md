@@ -7,13 +7,13 @@ Este programa implementa una aplicación que permite gestionar permisos de usuar
 Para compilar el programa, utiliza el siguiente comando en la terminal:
 
 ```bash
-g++ -o programa ej.cpp -std=c++11
+make
 ```
 # Ejecución
 Una vez compilado, puedes ejecutar el programa proporcionando el nombre de usuario y el vector correspondiente. Aquí tienes un ejemplo:
 
 ```bash
-./programa -u edgardo -v 1,2,3
+./ej -u edgardo -v 1,2,3
 ```
 Esto ejecuta el programa asignando como nombre de usuario "edgardo" y el vector {1, 2, 3}
 
